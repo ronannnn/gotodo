@@ -14,7 +14,7 @@ export default function TodoBoard() {
         id: 1,
         uid: 'col1',
         name: 'col1 name',
-        hexColor: '#fff111',
+        hexColor: '#8c8c8c',
         todoItems: [
           {
             uid: 'item1',
@@ -39,7 +39,7 @@ export default function TodoBoard() {
         id: 1,
         uid: 'col2',
         name: 'col2 name',
-        hexColor: '#fff111',
+        hexColor: '#8c8c8c',
         todoItems: [
           {
             uid: 'item3',

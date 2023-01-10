@@ -3,11 +3,9 @@ import { Draggable } from "react-beautiful-dnd";
 
 const TodoItem: React.FC<{
   index: number;
-  hexColor: string;
   todoItem: API.TodoItem;
 }> = ({
   index,
-  hexColor,
   todoItem,
 }) => {
 
@@ -24,10 +22,8 @@ const TodoItem: React.FC<{
             style={{
               borderRadius: '8px',
               overflow: 'hidden',
-              borderLeftColor: hexColor,
-              borderLeftWidth: '8px',
-              borderLeftStyle: 'solid',
-              padding: '4px 12px 12px 12px',
+              padding: '12px',
+              background: '#ffffff'
             }}
           >
             {todoItem.description}

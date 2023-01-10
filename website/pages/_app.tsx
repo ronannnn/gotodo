@@ -4,5 +4,9 @@ import { resetServerContext } from "react-beautiful-dnd"
 
 export default function App({ Component, pageProps }: AppProps) {
   resetServerContext();
-  return <Component {...pageProps} />
+  return (
+    <div style={{ background: "#f5f5f5" }}>
+      <Component {...pageProps} />
+    </div>
+  )
 }

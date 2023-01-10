@@ -1,8 +1,9 @@
 import TodoItem from "./TodoItem";
 import React, { useEffect, useRef, useState } from "react";
-import { Badge, Space, Typography } from "antd";
+import { Typography } from "antd";
 import { PlusIcon } from "../../../components/icon";
 import { Droppable } from "react-beautiful-dnd";
+import { HolderOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 
@@ -27,50 +28,36 @@ const TodoColumn: React.FC<{
 
   return (
     <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      width: '100%',
       padding: '8px 0 0 8px',
       borderRadius: '8px',
     }}>
       {/* Column Title */}
       <div style={{ marginRight: '8px' }}>
-        <Badge.Ribbon
-          text={todoColumn.name}
-          color={todoColumn.hexColor}
-        >
-          <div style={{
-            marginBottom: '1px',
-            padding: '10px',
-            backgroundColor: 'white',
-            borderRadius: '8px 8px 0 0',
-          }}>
-            <Text style={{ marginLeft: '6px' }} ellipsis type="secondary">
-              {todoColumn.name}
-            </Text>
-          </div>
-        </Badge.Ribbon>
         <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
           marginBottom: '16px',
           padding: '10px',
           backgroundColor: 'white',
-          borderRadius: '0 0 8px 8px',
+          borderRadius: '8px',
+
+          display: 'flex',
+          alignItems: 'center',
+
+          borderLeftColor: todoColumn.hexColor,
+          borderLeftWidth: '8px',
+          borderLeftStyle: 'solid',
         }}>
-          <Text strong>
+          <HolderOutlined />
+          <Text style={{ marginLeft: '6px' }} ellipsis type="secondary">
             {todoColumn.name}
           </Text>
-          <Space>
-            <a>
-              <PlusIcon
-                fill={editEnabled ? '#40a9ff' : '#d9d9d9'}
-                style={{
-                  pointerEvents: editEnabled ? 'auto' : 'none',
-                }}
-              />
-            </a>
-          </Space>
+          <a style={{ marginLeft: 'auto' }}>
+            <PlusIcon
+              fill={editEnabled ? '#40a9ff' : '#d9d9d9'}
+              style={{
+                pointerEvents: editEnabled ? 'auto' : 'none',
+              }}
+            />
+          </a>
         </div>
       </div>
       {/* Working Hour Items */}
@@ -89,9 +76,28 @@ const TodoColumn: React.FC<{
               className={'custom-scrollbar'}
             >
               {todoColumn.todoItems.map((item, i) => (
-                <TodoItem todoItem={item} index={i} hexColor={todoColumn.hexColor} key={item.uid}/>
+                <TodoItem todoItem={item} index={i} key={item.uid} />
               ))}
               {provided.placeholder}
+              <a onClick={() => console.log('click new item')}>
+                <div
+                  style={{
+                    borderRadius: '32px',
+                    padding: '12px',
+                    background: '#ffffff',
+                    marginRight: '8px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  <PlusIcon
+                    fill={editEnabled ? '#40a9ff' : '#d9d9d9'}
+                  />
+                  New Item
+                </div>
+              </a>
             </div>
           )}
         </Droppable>
